@@ -67,6 +67,7 @@ public:
 	void NoCooldown(bool enabled);
 	void InfiniteAirDash(bool enabled);
 	void IgnoreUpgradeMaterials(bool enabled);
+	void FreeCamera(bool enabled);
 
 	//Inventory
 	bool addItem(int ID, int number);

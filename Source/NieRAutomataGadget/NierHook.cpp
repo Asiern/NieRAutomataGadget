@@ -465,6 +465,24 @@ void NieRHook::InfiniteDoubleJump(bool enabled)
 	CloseHandle(pHandle);
 }
 
+void NieRHook::FreeCamera(bool enabled)
+{
+	HANDLE pHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, this->_pID);
+	int value;
+	if (enabled)
+	{
+		//Enable freecam
+		value = 0x80000000;
+		WriteProcessMemory(pHandle, (LPVOID)0x141415B90, &value, sizeof(value), NULL);
+	}
+	else
+	{
+		//Disable freecam
+		value = 0;
+		WriteProcessMemory(pHandle, (LPVOID)0x141415B90, &value, sizeof(value), NULL);
+	}
+}
+
 NieRHook::NieRHook()
 {
 	this->_hooked = false;
